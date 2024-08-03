@@ -1,0 +1,15 @@
+{{writeHeader}}
+
+import { z } from 'zod';
+
+export const {{pascalCase moduleName}}Schema = z.object({
+  someProperty: z.string(),
+});
+
+/**
+ * @typedef { z.infer<typeof {{pascalCase moduleName}}Schema> } {{pascalCase moduleName}}
+ */
+
+export const default{{pascalCase moduleName}} = {
+  someProperty: 'default value',
+};

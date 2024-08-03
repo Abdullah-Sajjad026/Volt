@@ -1,0 +1,70 @@
+{{writeHeader}}
+
+import { {{camelCase moduleName}}StaleTime } from "../../{{moduleName}}.config";
+import { useQuery } from "react-query";
+import apiClient from "pages/api/AxiosInstance";
+import axios from 'axios';
+
+/**
+ * @typedef { Object } Get{{pascalCase moduleName}}Props
+ * @property { unknown } someProperty
+ */
+
+/**
+ * @typedef { unknown } Get{{pascalCase moduleName}}Response
+ */
+
+/**
+ * @typedef { import("axios").AxiosResponse<Get{{pascalCase moduleName}}Response> } Get{{pascalCase moduleName}}AxiosResponse
+ */
+
+/**
+ * API Description goes here
+ * @param { Get{{pascalCase moduleName}}Props } props
+ */
+export function get{{pascalCase moduleName}}({ someProperty } = {}) {
+	return apiClient.get(`/some-endpoint/${someProperty}/`);
+}
+
+/**
+ * Generate a query key for the API
+ * @param { Get{{pascalCase moduleName}}Props } props
+ */
+export const get{{pascalCase moduleName}}QueryKey = props => ["{{camelCase moduleName}}", {
+	...props,
+	// If the query is to get an array of the same resource, add a unique identifier here as follows:
+	multiple: true
+	// Otherwise, remove it or set it to false
+	// This makes sure that the query key is unique for each request and we can still manage the cache of the resource without checking if it's a single resource or an array of resources.
+}];
+
+/**
+ * Generate the original response from the data
+ * @param { Get{{pascalCase moduleName}}Response } data
+ * @returns { { data: Get{{pascalCase moduleName}}AxiosResponse['data'] } }
+ */
+export const generateGet{{pascalCase moduleName}}QueryData = data => ({ data });
+
+/**
+ * Select the data from the response
+ * @param { Get{{pascalCase moduleName}}AxiosResponse } response
+ * @returns { Get{{pascalCase moduleName}}Response }
+ */
+export const selectGet{{pascalCase moduleName}}QueryData = response => response?.data;
+
+/**
+ * API Description goes here
+ * @param { Get{{pascalCase moduleName}}Props } props
+ * @param { import("react-query").UseQueryOptions<Get{{pascalCase moduleName}}Response, import("axios").AxiosError> & {
+ * 	select: (data: Get{{pascalCase moduleName}}AxiosResponse) => Get{{pascalCase moduleName}}Response
+ * } } [queryProps]
+ */
+export function useGet{{pascalCase moduleName}}(props, queryProps = {}) {
+	return useQuery({
+		queryFn: () => get{{pascalCase moduleName}}(props),
+		queryKey: get{{pascalCase moduleName}}QueryKey(props),
+		select: selectGet{{pascalCase moduleName}}QueryData,
+		staleTime: {{camelCase moduleName}}StaleTime,
+		...queryProps,
+	});
+}

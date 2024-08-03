@@ -1,0 +1,21 @@
+{{writeHeader}}
+
+/**
+ * @param { string } [path="{{moduleName}}"] - The path to the module.
+ */
+export function get{{pascalCase moduleName}}Routes(path = "{{moduleName}}") {
+	return {
+		index: {
+			path,
+			getPath: () => path,
+		},
+		someRoute: {
+      path: `${path}/some-route`,
+      /**
+			 * @param { object } options - The options of the route.
+       * @param { string } options.someProp - Some property of the route.
+       */
+      getPath: ({ someProp }) => `${path}/some-route/${someProp}`,
+    }
+	};
+}

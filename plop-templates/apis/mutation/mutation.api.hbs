@@ -1,0 +1,46 @@
+{{writeHeader}}
+
+import { useMutation } from "react-query";
+import apiClientApi from "pages/api/AxiosInstance";
+import axios from 'axios';
+
+/**
+ * @typedef { Object } Update{{pascalCase moduleName}}Props
+ * @property { unknown } someProperty
+ */
+
+/**
+ * @typedef { unknown } Update{{pascalCase moduleName}}Response
+ */
+
+/**
+ * @typedef { import("axios").AxiosResponse<Update{{pascalCase moduleName}}Response> } Update{{pascalCase moduleName}}AxiosResponse
+ */
+
+/**
+ * API Description goes here
+ * @param { Update{{pascalCase moduleName}}Props } props
+ */
+export function update{{pascalCase moduleName}}({ someProperty } = {}) {
+	return apiClientApi.post("/some-endpoint", {
+		someProperty,
+	});
+}
+
+/**
+ * Select the data from the response
+ * @param { Update{{pascalCase moduleName}}AxiosResponse } response
+ * @returns { Update{{pascalCase moduleName}}Response }
+ */
+export const selectUpdate{{pascalCase moduleName}}MutationData = response => response?.data;
+
+/**
+ * API Description goes here
+ * @param { import("react-query").UseMutationOptions<Update{{pascalCase moduleName}}AxiosResponse, import("axios").AxiosError, Update{{pascalCase moduleName}}Props> } [props]
+ */
+export function useUpdate{{pascalCase moduleName}}(props = {}) {
+	return useMutation({
+		mutationFn: update{{pascalCase moduleName}},
+		...props,
+	});
+}

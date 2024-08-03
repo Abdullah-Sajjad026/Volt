@@ -1,0 +1,25 @@
+{{writeHeader}}
+
+import { useQueryClient } from 'react-query'
+import { useGet{{pascalCase moduleName}}, get{{pascalCase moduleName}}QueryKey, generateGet{{pascalCase moduleName}}QueryData } from '../../apis'
+
+export function use{{pascalCase moduleName}}() {
+  // Get a certain resource from the query client and define a setter function to update the resource.
+  // You have to adjust the following lines to match your query key and query data accordingly.
+  // const queryClient = useQueryClient()
+
+  // const { data: {{camelCase moduleName}}, ...get{{pascalCase moduleName}} } = useGet{{pascalCase moduleName}}()
+
+  // function set{{pascalCase moduleName}}(new{{pascalCase moduleName}}) {
+  //   queryClient.setQueryData(
+  //     get{{pascalCase moduleName}}QueryKey(),
+  //     generateGet{{pascalCase moduleName}}QueryData(new{{pascalCase moduleName}})
+  //   )
+  // }
+
+  // return {
+  //   {{camelCase moduleName}},
+  //   set{{pascalCase moduleName}},
+  //   ...get{{pascalCase moduleName}}
+  // }
+}

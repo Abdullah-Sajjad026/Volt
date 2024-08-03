@@ -1,0 +1,79 @@
+{{writeHeader}}
+
+import { getStandardErrorMessage, log } from "modules/shared/";
+import Loader from "modules/shared/components/loader";
+import { {{pascalCase moduleName}}Context } from "../../contexts";
+import { use{{pascalCase moduleName}} } from '../../hooks'
+import { Alert } from "@mui/material";
+
+/**
+ * @template T
+ *
+ * @param { React.ComponentType<T> } Component The component to wrap.
+ *
+ * @param { Object } options
+ * @param { React.ReactNode } [options.error] - The node to render when there is an error, defaults to an alert, passing in null will render nothing.
+ * @param { React.ReactNode } [options.loading] - The node to render when loading, defaults to a spinner, passing in null will render nothing.
+ * @param { boolean } [options.ignoreError=false] - If true, the error will be ignored and the component will render as if there is no error.
+ * @param { boolean } [options.ignoreLoading=false] - If true, the loading will be ignored and the component will render as if it is not loading. 
+ */
+export function with{{pascalCase moduleName}}(Component, { error, loading, ignoreError = false, ignoreLoading = false } = {}) {
+  /**
+   * @param { T } props The props to pass to the component.
+   */
+  return function With{{pascalCase moduleName}}(props) {
+    //! Get the query data and check if it's loading or has an error and render the appropriate component.
+    //! Following is an example of how to use the hook and render the appropriate component.
+    
+    // const { {{camelCase moduleName}}, set{{pascalCase moduleName}}, ...queryResult } = use{{pascalCase moduleName}}();
+
+    // const { isError, isLoading, isRefetching, refetch } = queryResult;
+
+    // const value = { {{camelCase moduleName}}, set{{pascalCase moduleName}}, queryResult }
+
+    // 1. Generate the final node
+    // const node = (
+    //  <{{pascalCase moduleName}}Context.Provider value={value}>
+    // 	  <Component {...props} />
+    //  </{{pascalCase moduleName}}Context.Provider>
+    // );
+
+    // 2. Handle error
+    // if (isError) {
+    // 	log("Error loading {{camelCase moduleName}}", { {{camelCase moduleName}} });
+
+    //  2a. Render the node as is if errors are ignored
+    // 	if (ignoreError) { return node; }
+
+    //  2b. Render the error node if it's not null and fallback to the default error node
+    // 	return error !== undefined ? error : (
+    // 	<Alert
+    	// 		severity="error"
+    	// 	>
+    	// 		{getStandardErrorMessage("loading the clients")}
+    	// 	</Alert>
+    	// );
+    // }
+
+    // 3. Handle loading
+    // if (isLoading) {
+    // 	log("Loading {{camelCase moduleName}}", { {{camelCase moduleName}} });
+
+    //  3a. Render the node as is if loading is ignored
+    // 	if (ignoreLoading) { return node; }
+
+    //  3b. Render the loading node if it's not null and fallback to the default loading node
+    // 	return loading !== undefined ? loading : <Loader />;
+    // }
+
+    // log(
+    // 	"Loaded {{camelCase moduleName}}",
+    // 	{
+    // 		{{camelCase moduleName}},
+    // 	},
+    // );
+
+    // 4. Render the node
+    // return node;
+  };
+}

@@ -1,0 +1,21 @@
+{{writeHeader}}
+
+import { createContext, useContext } from 'react';
+
+/**
+ * @type { import('react').Context<{
+ * 	{{camelCase moduleName}}: import('../../models').{{pascalCase moduleName}},
+ * 	set{{pascalCase moduleName}}: ({{camelCase moduleName}}: import('../../models').{{pascalCase moduleName}}) => void,
+ *  queryResult?: Omit<import("react-query").UseQueryResult, 'data'>
+ * }> }
+ */
+export const {{pascalCase moduleName}}Context = createContext({
+	{{camelCase moduleName}}: undefined,
+	set{{pascalCase moduleName}}: () => {},
+ 	// Enable this if the module has a query. Consumers can use this directly anywhere in the tree to do a refetch or anything else that query allows.
+	// queryResult: {}
+});
+
+export function use{{pascalCase moduleName}}Context() {
+	return useContext({{pascalCase moduleName}}Context);
+}

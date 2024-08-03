@@ -1,0 +1,15 @@
+{{writeHeader}}
+
+import { it, expect, describe } from "vitest";
+import { renderHook } from "@testing-library/react";
+import { use{{pascalCase moduleName}} } from "./{{moduleName}}.hook";
+
+describe("Modules / {{pascalCase moduleName}} / Hook", () => {
+	it("TODO: Add test cases", () => {
+		const {
+			result: { current },
+		} = renderHook(() => use{{pascalCase moduleName}}());
+
+		expect(current).toBeDefined();
+	});
+});

@@ -1,0 +1,17 @@
+{{writeHeader}}
+
+import { it, expect, describe } from "vitest";
+import { render } from "@testing-library/react";
+import { {{pascalCase moduleName}}Layout } from './{{moduleName}}.layout';
+
+describe("Modules / {{pascalCase moduleName}} / Layout", () => {
+	it("TODO: Add test cases", () => {
+		const { getByText } = render(
+			<{{pascalCase moduleName}}Layout>
+				<div>Test</div>
+			</{{pascalCase moduleName}}Layout>
+		);
+
+		expect(getByText("Test")).toBeDefined();
+	});
+});

@@ -1,0 +1,13 @@
+{{writeHeader}}
+
+import { defaultStaleTime } from "modules/shared/shared.constants";
+
+//Versioning
+export const {{camelCase moduleName}}Version = '0.1 alpha';
+export const is{{pascalCase moduleName}}InAlpha = true;
+export const is{{pascalCase moduleName}}InBeta = false;
+
+// Query
+
+// Update the staleTime according to the needs of the application, the default isn't always the best
+export const {{camelCase moduleName}}StaleTime = defaultStaleTime
